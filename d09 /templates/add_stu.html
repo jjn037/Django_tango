@@ -1,0 +1,20 @@
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Add student{% endblock %}
+
+{% block body_block %}
+    <h1>Add a student</h1>
+
+    <form id="add_stu" method="post" action="/stu/add_stu/" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        {% for field in form %}
+            {{ field.error }}
+            <ul>{{ field.help_text }}
+            {{ field }}</ul>
+        {% endfor %}
+
+        <input type="submit" name="submit" value="Add" />
+    </form>
+{% endblock %}
